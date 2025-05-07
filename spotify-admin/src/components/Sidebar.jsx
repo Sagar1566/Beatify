@@ -3,26 +3,28 @@ import { NavLink } from 'react-router-dom';
 
 function Sidebar() {
     return (
-        <div className='bg-[#121212] min-h-screen pl-[4vw] text-white'>
+        <div className='bg-[#121212] min-h-screen pl-[4vw] pr-[4vw] flex flex-col items-center'>
             <img src={assets.logo} className='mt-5 w-[max(10vw,100px)] hidden sm:block' alt="logo" />
             <img src={assets.logo_small} className='mt-5 w-[max(10vw,10px)] mr-5 block sm:hidden' alt="logo_small" />
-            <div className="flex flex-col gap-5 mt-10">
-                <NavLink to={"/add-song"} className="flex items-center gap-2.5 bg-[#1f1f1f] border border-[#2d2d2d] p-2 pr-[max(8vw,10px)] text-sm font-medium text-white drop-shadow-[-3px_3px_#00e0ff] hover:bg-[#292929] transition">
-                    <img src={assets.add_song} className='w-5' alt="Add Song" />
-                    <p className='hidden sm:block'>Add Song</p>
-                </NavLink>
-                <NavLink to={"/list-song"} className="flex items-center gap-2.5 bg-[#1f1f1f] border border-[#2d2d2d] p-2 pr-[max(8vw,10px)] text-sm font-medium text-white drop-shadow-[-3px_3px_#00e0ff] hover:bg-[#292929] transition">
-                    <img src={assets.song_icon} className='w-5' alt="List Song" />
-                    <p className='hidden sm:block'>List Song</p>
-                </NavLink>
-                <NavLink to={"/add-album"} className="flex items-center gap-2.5 bg-[#1f1f1f] border border-[#2d2d2d] p-2 pr-[max(8vw,10px)] text-sm font-medium text-white drop-shadow-[-3px_3px_#00e0ff] hover:bg-[#292929] transition">
-                    <img src={assets.add_album} className='w-5' alt="Add Album" />
-                    <p className='hidden sm:block'>Add Album</p>
-                </NavLink>
-                <NavLink to={"/list-album"} className="flex items-center gap-2.5 bg-[#1f1f1f] border border-[#2d2d2d] p-2 pr-[max(8vw,10px)] text-sm font-medium text-white drop-shadow-[-3px_3px_#00e0ff] hover:bg-[#292929] transition">
-                    <img src={assets.album_icon} className='w-5' alt="List Album" />
-                    <p className='hidden sm:block'>List Album</p>
-                </NavLink>
+            
+            <h1 className="text-2xl font-bold text-green-500 mt-3">Beautify</h1>
+
+            <div className="flex flex-col gap-6 mt-12 w-full items-center">
+                {[
+                    { to: "/add-song", icon: assets.add_song, text: "Add Song" },
+                    { to: "/list-song", icon: assets.song_icon, text: "List Song" },
+                    { to: "/add-album", icon: assets.add_album, text: "Add Album" },
+                    { to: "/list-album", icon: assets.album_icon, text: "List Album" },
+                ].map(({ to, icon, text }) => (
+                    <NavLink
+                        to={to}
+                        key={to}
+                        className="w-[90%] max-w-[250px] flex items-center justify-center gap-3 bg-[#1f1f1f] text-white border border-[#6e2bcf] py-3 rounded-xl shadow-[0_4px_10px_rgba(110,43,207,0.5)] hover:bg-[#292929] transition-all"
+                    >
+                        <img src={icon} className='w-5' alt={text} />
+                        <p className='text-base font-semibold'>{text}</p>
+                    </NavLink>
+                ))}
             </div>
         </div>
     )
