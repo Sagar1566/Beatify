@@ -7,7 +7,7 @@ function Sidebar() {
             <img src={assets.logo} className='mt-5 w-[max(10vw,100px)] hidden sm:block' alt="logo" />
             <img src={assets.logo_small} className='mt-5 w-[max(10vw,10px)] mr-5 block sm:hidden' alt="logo_small" />
             
-            <h1 className="text-2xl font-bold text-green-500 mt-3">Beautify</h1>
+          
 
             <div className="flex flex-col gap-6 mt-12 w-full items-center">
                 {[
